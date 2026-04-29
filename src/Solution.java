@@ -68,7 +68,7 @@ public class Solution {
             if (nums[l] <= nums[r]) {
                 return nums[l];
             }
-            if (nums[m] >= nums[l]) {
+            if (nums[l] <= nums[m]) {
                 l = m + 1;
             } else {
                 r = m;
@@ -101,5 +101,53 @@ public class Solution {
             }
         }
         return -1;
+    }
+
+    // 15
+    public List<List<Integer>> threeSum(int[] nums) {
+        List<List<Integer>> result = new ArrayList<>();
+        Arrays.sort(nums);
+        for (int i = 0; i < nums.length; i++) {
+            if (i != 0 && nums[i - 1] == nums[i]) {
+                continue;
+            }
+            int l = i + 1;
+            int r = nums.length - 1;
+            while (l < r) {
+                int sum = nums[i] + nums[l] + nums[r];
+                if (sum == 0) {
+                    result.add(Arrays.asList(nums[i], nums[l], nums[r]));
+                    do {
+                        l++;
+                    } while (nums[l] == nums[l - 1] && l < r);
+                } else if (sum < 0) {
+                    l++;
+                } else {
+                    r--;
+                }
+            }
+        }
+        return result;
+    }
+
+    // 11
+    public int maxArea(int[] height) {
+        int maxArea = 0;
+        int l = 0;
+        int r = height.length - 1;
+        while (l < r) {
+            int area = (r - l) * Math.min(height[l], height[r]);
+            maxArea = Math.max(maxArea, area);
+            if (height[l] < height[r]) {
+                l++;
+            } else {
+                r--;
+            }
+        }
+        return maxArea;
+    }
+
+    public static void main(String[] args) {
+        System.out.println("main function");
     }
 }
