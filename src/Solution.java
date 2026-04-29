@@ -2,6 +2,10 @@ import java.util.*;
 
 public class Solution {
 
+    public static void main(String[] args) {
+        System.out.println("main function");
+    }
+
     // 1
     public int[] twoSum(int[] nums, int target) {
         Map<Integer, Integer> hashMap = new HashMap<>();
@@ -147,7 +151,4 @@ public class Solution {
         return maxArea;
     }
 
-    public static void main(String[] args) {
-        System.out.println("main function");
-    }
 }
